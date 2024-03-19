@@ -59,7 +59,8 @@ class BayesClassifier:
         # stored below is how you would load a file with filename given by `fName`
         # `text` here will be the literal text of the file (i.e. what you would see
         # if you opened the file in a text editor
-        # text = self.load_file(os.path.join(self.training_data_directory, fName))
+        fName = files[0]
+        text = self.load_file(os.path.join(self.training_data_directory, fName))
 
 
         # *Tip:* training can take a while, to make it more transparent, we can use the
@@ -70,7 +71,7 @@ class BayesClassifier:
             print(f"Training on file {index} of {len(files)}")
             print(filename)
             text = self.load_file(os.path.join(self.training_data_directory, filename))
-            print(text)
+            # print(text)
         #     <the rest of your code for updating frequencies here>
 
 
@@ -79,12 +80,15 @@ class BayesClassifier:
         
         # for each file, if it is a negative file, update (see the Updating frequencies
         # set of comments for what we mean by update) the frequencies in the negative
-        # frequency dictionary. If it is a positive file, update (again see the Updating
+        # frequency dictionary. If it is a pos  itive file, update (again see the Updating
         # frequencies set of comments for what we mean by update) the frequencies in the
         # positive frequency dictionary. If it is neither a postive or negative file,
         # ignore it and move to the next file (this is more just to be safe; we won't
         # test your code with neutral reviews)
-        
+            print(filename.startswith(self.pos_file_prefix))
+            print(filename.startswith(self.neg_file_prefix))
+            tokens = self.tokenize(text)
+            print(tokens)
 
         # Updating frequences: to update the frequencies for each file, you need to get
         # the text of the file, tokenize it, then update the appropriate dictionary for
@@ -230,7 +234,7 @@ class BayesClassifier:
 
 if __name__ == "__main__":
     # uncomment the below lines once you've implemented `train` & `classify`
-    # b = BayesClassifier()
+    b = BayesClassifier()
     # a_list_of_words = ["I", "really", "like", "this", "movie", ".", "I", "hope", \
     #                    "you", "like", "it", "too"]
     # a_dictionary = {}
