@@ -96,7 +96,7 @@ class BayesClassifier:
         # those tokens. We've asked you to write a function `update_dict` that will make
         # your life easier here. Write that function first then pass it your list of
         # tokens from the file and the appropriate dictionary
-            self.update_dict(tokens, self.pos_freqs)
+            
             if filename.startswith(self.pos_file_prefix):
                 self.update_dict(tokens, self.pos_freqs)
             elif filename.startswith(self.neg_file_prefix):
@@ -127,7 +127,7 @@ class BayesClassifier:
             classification, either positive, negative or neutral
         """
         # TODO: fill me out
-
+        tokens = self.tokenize(text)
         
         # get a list of the individual tokens that occur in text
         
@@ -135,12 +135,18 @@ class BayesClassifier:
         # create some variables to store the positive and negative probability. since
         # we will be adding logs of probabilities, the initial values for the positive
         # and negative probabilities are set to 0
+        pos_prob = 0
+        neg_prob = 0
         
 
         # get the sum of all of the frequencies of the features in each document class
         # (i.e. how many words occurred in all documents for the given class) - this
         # will be used in calculating the probability of each document class given each
         # individual feature
+        num_pos_words = sum(self.pos_freqs.values())
+        num_neg_words = sum(self.neg_freqs.values())
+        print(num_pos_words)
+        print(num_neg_words)
         
 
         # for each token in the text, calculate the probability of it occurring in a
@@ -283,15 +289,15 @@ if __name__ == "__main__":
     print(f"count for the word 'the' in positive dictionary {b.pos_freqs['the']}")
     print(f"count for the word 'the' in negative dictionary {b.neg_freqs['the']}")
 
-    # print("\nHere are some sample probabilities.")
-    # print(f"P('love'| pos) {(b.pos_freqs['love']+1)/pos_denominator}")
-    # print(f"P('love'| neg) {(b.neg_freqs['love']+1)/neg_denominator}")
-    # print(f"P('terrible'| pos) {(b.pos_freqs['terrible']+1)/pos_denominator}")
-    # print(f"P('terrible'| neg) {(b.neg_freqs['terrible']+1)/neg_denominator}")
+    print("\nHere are some sample probabilities.")
+    print(f"P('love'| pos) {(b.pos_freqs['love']+1)/pos_denominator}")
+    print(f"P('love'| neg) {(b.neg_freqs['love']+1)/neg_denominator}")
+    print(f"P('terrible'| pos) {(b.pos_freqs['terrible']+1)/pos_denominator}")
+    print(f"P('terrible'| neg) {(b.neg_freqs['terrible']+1)/neg_denominator}")
 
     # # uncomment the below lines once you've implemented `classify`
     # print("\nThe following should all be positive.")
-    # print(b.classify('I love computer science'))
+    print(b.classify('I love computer science'))
     # print(b.classify('this movie is fantastic'))
     # print("\nThe following should all be negative.")
     # print(b.classify('rainy days are the worst'))
