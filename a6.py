@@ -145,8 +145,8 @@ class BayesClassifier:
         # individual feature
         num_pos_words = sum(self.pos_freqs.values())
         num_neg_words = sum(self.neg_freqs.values())
-        print(num_pos_words)
-        print(num_neg_words)
+        # print(num_pos_words)
+        # print(num_neg_words)
         
 
         # for each token in the text, calculate the probability of it occurring in a
@@ -322,4 +322,21 @@ if __name__ == "__main__":
     print("\nThe following should all be negative.")
     print(b.classify('rainy days are the worst'))
     print(b.classify('computer science is terrible'))
-    pass
+
+    print("\nThe following is to test out the method with each groups responses")
+    print(b.classify("I'm so excited for the solar eclipse! It's going to be so cool!"))
+
+    print(b.classify('I love candy and chocolate'))
+    print(b.classify('I can\'t wait for the new movie to come out!'))
+    print(b.classify('Those are cool glasses!'))
+
+    print(b.classify('The solar eclipse is going to be boring, why should we waste our time?'))
+    print(b.classify('The actor looked like a bad Oompa Loompa'))
+    print(b.classify('I hate how good this movie is'))
+    print(b.classify('I love how bad this movie is'))
+
+    print(b.classify('The \'Barbie Movie\' brings to life the beloved doll in a delightful and empowering animated adventure that will enchant audiences of all ages. Directed by a talented team, the film embraces the essence of Barbie\'s timeless charm while weaving a heartwarming tale that inspires and entertains.'))
+    print(b.classify('\'Oppenheimer\' is an exceptional film that deserves the highest praise for its thought-provoking narrative, exquisite craftsmanship, and compelling performances. From the very first frame, the movie draws the audience into the fascinating world of J. Robert Oppenheimer, the brilliant physicist whose contributions during World War II profoundly altered the course of history.'))
+
+    print(b.classify('I would like to say this movie was RUINED by the small animation error towards the beginning of the movie where sam draws a vest for flynt on their dream lab and was only holding a blue pen but drew ORANGE with said blue pen. Other wise the movie would be near perfect, I would ask that this be fixed or receive an apology for the error.'))
+    print(b.classify('This must be the most overrated film in human history. Too long, too dramatic, overrated, and boring until the ship finally sinks. The awful theme song by Celine, a bored housewives favourite, is simply dreadful, to the point where I would love to meet Celine and give her a good slap over it. Some scenes are good but thankfully I didn\'t have to pay to watch it or I would have wanted my money back.'))
